@@ -131,34 +131,8 @@ app.get("/customers/:customerId", async (req, res) => {
   return res.json({ portalSession });
 });
 
-app.use(
-  express.static(path.join(__dirname, "../Frontend/chat-application/dist"))
-);
-
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "../Frontend/chat-application/dist/index.html")
-  );
-});
-
-app.get("/", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chat App</title>
-      </head>
-      <body>
-        <div id="root">Loading...</div>
-   <script src="/dist/assets/bundle.js"></script>
-      </body>
-    </html>
-  `);
-});
 app.get("/cancel", (req, res) => {
-  res.redirect("/chat/new");
+  res.redirect("https://ansight.up.railway.app/chat/new");
 });
 
 app.listen(port, () => {
